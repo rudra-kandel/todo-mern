@@ -1,0 +1,60 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && tsc-alias",
+    "dev": "nodemon",
+      "start": "npx tsx src/index.ts",
+    "server:prod": "node dist/server.ts",
+    "server:dev": "ts-node-dev --inspect=0.0.0.0:9229 --exit-child --respawn -r tsconfig-paths/register src/server.ts",
+    "test": "jest -c jest.config.ts --env=node",
+    "test:cov": "jest -c jest.config.ts --coverage --env=node",
+    "test:watch": "jest -c jest.config.ts -i --watchAll",
+    "lint": "eslint ./src/**/*.ts",
+    "lint:fix": "eslint **/*.ts --fix",
+    "prettier": "prettier --check \"{*.ts,!(node*)**/*.ts}\"",
+    "prettier:fix": "prettier --write \"{*.ts,!(node*)**/*.ts}\"",
+    "loglevel:change": "runtime-node-refresh"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src"
+    ],
+    "ext": "ts",
+    "exec": "npx tsx src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-async-errors": "^3.1.1",
+    "express-http-context": "^1.2.4",
+    "express-validator": "^7.1.0",
+    "handlebars": "^4.7.8",
+    "helmet": "^7.1.0",
+    "http-status": "^1.7.4",
+    "ioredis": "^5.4.1",
+    "joi": "^17.13.3",
+    "json-web-token": "^3.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^6.9.14",
+    "nodemon": "^3.1.4",
+    "pg": "^8.12.0",
+    "reflect-metadata": "^0.2.2",
+    "sequelize": "^6.37.3",
+    "socket.io": "^4.7.5",
+    "ts-node": "^10.9.2",
+    "uuid": "^10.0.0",
+    "winston": "^3.14.1"
+  },
+  "devDependencies": {
+    "@types/socket.io": "^3.0.2",
+    "tsconfig-paths": "^4.2.0"
+  }
+}
