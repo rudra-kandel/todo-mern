@@ -2,7 +2,7 @@ import sequelize from '@config/database.config';
 import { DataTypes, Model } from 'sequelize';
 import { v4 as uuidV4 } from 'uuid';
 
-class User extends Model {
+export class User extends Model {
     declare id: string;
     declare email: string;
     declare password: string;

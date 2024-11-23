@@ -13,7 +13,7 @@ const register = async (req: Request, res: Response, next: NextFunction) => {
 
         const newUser = await registerUser(userDto);
 
-        return sendSuccessResponse(res, httpStatus.CREATED, "Registered Sucessfully.Please check your email for verification")
+        return sendSuccessResponse(res, httpStatus.CREATED, "Registered Sucessfully.Proceed to login")
     } catch (error) {
         next(error)
     }

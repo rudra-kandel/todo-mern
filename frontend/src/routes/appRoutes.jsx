@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { useRoutes } from "react-router-dom";
 import { navigationRoutes } from "./routes-constants";
+import Home from "@pages/Home/home";
 const Register = lazy(() => import("@pages/Auth/register"));
 // import Login from "@pages/Auth/login";
 //Lazy loading
@@ -11,7 +12,7 @@ const Login = lazy(() => import("@pages/Auth/login"));
 const commonRoutes = [
   {
     path: navigationRoutes.base,
-    element: <Login />,
+    element: <Home />,
   },
 ];
 
