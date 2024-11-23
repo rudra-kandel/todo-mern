@@ -1,0 +1,40 @@
+services:
+  database:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data 
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    env_file:
+      - ./backend/.env
+    volumes:
+      - ./backend:/usr/src/backend
+      - /usr/src/backend/node_modules
+    depends_on:
+      - database
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "4001:4001"
+    env_file:
+      - ./frontend/.env
+    volumes:
+      - ./frontend:/usr/src/frontend
+      - /usr/src/frontend/node_modules
+    depends_on:
+      - backend
+
+volumes:
+  - ./data/postgresql:/var/lib/postgresql/data
